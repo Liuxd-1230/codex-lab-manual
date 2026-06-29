@@ -21,8 +21,8 @@
   </div>
   <div class="content">
 
-    <h1>实用 Skills：少装、会装、会用</h1>
-    <p class="lead">Skill 可以把 Codex 从“通用助手”变成“会按固定规矩办事的助手”。但不要见一个装一个。先装最常用、最可信、能解释清楚用途的；遇到新任务，再让 Codex 去 GitHub 帮你找。</p>
+    <h1>实用 Skills：少装、会找、会判断</h1>
+    <p class="lead">Skill 可以把 Codex 从“通用助手”变成“会按固定规矩办事的助手”。但不要见一个装一个。先装最常用、最可信、能解释清楚用途的；遇到新任务，再让 Codex 去 GitHub、SkillsHub、SkillHub 和官方目录帮你找。</p>
 
     <h2>什么是 Skill</h2>
     <p>Skill 是一包说明书。里面通常有一个 <code>SKILL.md</code>，告诉 Codex 遇到某类任务时要按什么流程做、先问什么、不能乱做什么。它不是模型，也不是插件本体，更像“任务操作规程”。</p>
@@ -36,22 +36,49 @@
     </div>
     <p>确认计划没问题后，再让它执行。装完要求它验证三件事：Skill 是否在正确目录、Codex 新会话是否能识别、用一个小任务能否触发。</p>
 
-    <h2>推荐优先看的 GitHub 仓库</h2>
+    <h2>想实现一个新功能，先让 Codex 去找</h2>
+    <p>你不需要先知道应该装什么。想做 PPT、整理 Obsidian、连接本地 Zotero、控制腾讯 ima 这类桌面或网页工具，都可以先描述目标，让 Codex 去找实现路径。</p>
+    <p>这一步默认用 Plan：先查资料，先读 README 和 <code>SKILL.md</code>，先判断 Windows 能不能跑；不要一上来安装、改配置或开全盘权限。</p>
+    <div class="callout tip">
+      <span class="cl-label">可以这样说</span>
+      <p>“我想实现【具体功能】。请进入 Plan，先不要安装和修改任何文件。请帮我搜索 GitHub、SkillsHub、国内 SkillHub 和官方文档，判断有没有适合 Codex 的 Skill、MCP、插件或本地自动化方案；说明 Windows 下怎么接入、风险是什么、需要我确认哪些权限。”</p>
+    </div>
+
+    <h2>Skill 最佳实现参考表</h2>
+    <p>下面这些不是“必须安装清单”，而是优先让 Codex 去看的具体入口。先查，再判断；能走文件就走文件，能走 API 就走 API，最后才考虑界面控制。</p>
     <div class="table-wrap">
     <table>
-    <thead><tr><th>仓库</th><th>适合做什么</th><th>建议</th></tr></thead>
+    <thead><tr><th>入口</th><th>适合做什么</th><th>建议</th></tr></thead>
     <tbody>
+      <tr><td><a href="https://github.com/openai/skills" target="_blank" rel="noopener">openai/skills</a></td><td>官方 Skills 目录和示例，适合先理解标准格式、安装方式和官方推荐入口<sup><a href="08-troubleshoot.html#cite-22">[22]</a></sup></td><td>优先可信；注意仓库说明里也会提示新的官方插件路径</td></tr>
+      <tr><td><a href="https://skillshub.wtf/" target="_blank" rel="noopener">SkillsHub</a> / <a href="https://www.skillshub.work/" target="_blank" rel="noopener">Skills Hub</a></td><td>按任务搜索 Skill，适合不知道关键词时先找方向<sup><a href="08-troubleshoot.html#cite-23">[23]</a></sup><sup><a href="08-troubleshoot.html#cite-24">[24]</a></sup></td><td>当发现入口用，不当安全背书</td></tr>
+      <tr><td><a href="https://skillhub.cn/" target="_blank" rel="noopener">国内 SkillHub</a></td><td>国内网络下找 Skills 和中文资料更方便<sup><a href="08-troubleshoot.html#cite-25">[25]</a></sup></td><td>适合先搜中文方案；安装前仍要读源码和权限</td></tr>
+      <tr><td><a href="https://github.com/VoltAgent/awesome-agent-skills" target="_blank" rel="noopener">VoltAgent/awesome-agent-skills</a></td><td>社区大清单，覆盖官方团队和社区 Skills，兼容 Codex、Claude Code、Cursor 等<sup><a href="08-troubleshoot.html#cite-26">[26]</a></sup></td><td>适合扫目录，不适合一次装满</td></tr>
+      <tr><td><a href="https://github.com/mattpocock/skills" target="_blank" rel="noopener">mattpocock/skills</a></td><td><code>grill-me</code>、<code>grill-with-docs</code>、诊断、TDD、handoff 等工作流 Skill<sup><a href="08-troubleshoot.html#cite-27">[27]</a></sup></td><td><code>grill-me</code> 很适合把需求问清楚；全套偏重，按需装</td></tr>
+      <tr><td><a href="https://github.com/ningzimu/codex-ppt-skill" target="_blank" rel="noopener">ningzimu/codex-ppt-skill</a></td><td>生成图片式 PPT、演讲稿和 PowerPoint 文件，适合技术文章、论文报告、课程笔记转演示<sup><a href="08-troubleshoot.html#cite-28">[28]</a></sup></td><td>若 Codex 已有内置 presentations 能力，先用内置；需要强视觉统一再评估</td></tr>
+      <tr><td><a href="https://github.com/SkyworkAI/Skywork-Skills" target="_blank" rel="noopener">SkyworkAI/Skywork-Skills</a></td><td>AI PPT、文档、表格、图片、搜索和音乐等办公套件 Skills<sup><a href="08-troubleshoot.html#cite-29">[29]</a></sup></td><td>适合作为办公类候选，不默认全装</td></tr>
+      <tr><td><a href="https://github.com/kepano/obsidian-skills" target="_blank" rel="noopener">kepano/obsidian-skills</a></td><td>Obsidian Markdown、Bases、JSON Canvas、Obsidian CLI 等 vault 工作流<sup><a href="08-troubleshoot.html#cite-30">[30]</a></sup></td><td>Obsidian 优先走 Markdown 文件和 vault 规则，不急着点界面</td></tr>
+      <tr><td><a href="https://github.com/zyf4321/zotero-obsidian-paper-reader-skill" target="_blank" rel="noopener">zyf4321/zotero-obsidian-paper-reader-skill</a></td><td>从 Zotero 或本地 PDF 生成双语 Obsidian 论文阅读包<sup><a href="08-troubleshoot.html#cite-31">[31]</a></sup></td><td>适合论文精读；先确认 PDF、截图和笔记输出目录</td></tr>
+      <tr><td><a href="https://github.com/WenyuChiou/research-hub" target="_blank" rel="noopener">WenyuChiou/research-hub</a></td><td>把 Zotero、Obsidian、NotebookLM 组织成可被 Agent 操作的研究工作台<sup><a href="08-troubleshoot.html#cite-32">[32]</a></sup></td><td>能力更重，适合先让 Codex 做架构和安装风险评估</td></tr>
       <tr><td><a href="https://github.com/Arcadia-1/virtuoso-bridge-lite" target="_blank" rel="noopener">Arcadia-1/virtuoso-bridge-lite</a></td><td>让 Codex 连接 Cadence Virtuoso、Spectre、Maestro 等本地或远程工具<sup><a href="08-troubleshoot.html#cite-12">[12]</a></sup></td><td>需要配环境，先让 Codex 做安装计划</td></tr>
       <tr><td><a href="https://github.com/Liuxd-1230/deriving-buck-df-transfer-functions" target="_blank" rel="noopener">Liuxd-1230/deriving-buck-df-transfer-functions</a></td><td>按固定流程做传函推导、检查输入是否齐全、生成可追溯报告<sup><a href="08-troubleshoot.html#cite-13">[13]</a></sup></td><td>适合严肃推导，信息不齐时让它停下来问</td></tr>
       <tr><td><a href="https://github.com/Imbad0202/academic-research-skills-codex" target="_blank" rel="noopener">Imbad0202/academic-research-skills-codex</a></td><td>论文结构、章节撰写、文献整理、图表和语言润色<sup><a href="08-troubleshoot.html#cite-14">[14]</a></sup></td><td>适合写作流程，不要让它替代最终判断</td></tr>
-      <tr><td>OpenAI / Codex 相关官方与社区 Skill</td><td>浏览器控制、文档处理、表格、PDF、图片生成、GitHub 工作流等</td><td>先按任务搜索，不要一次装满</td></tr>
     </tbody>
     </table>
     </div>
 
-    <h2>怎么让 Codex 去 GitHub 挖</h2>
-    <p>不要只搜“best skills”。更好的搜索词是“任务 + Codex Skill + SKILL.md”。例如：论文写作、PDF 处理、Google Sheets、browser automation、LaTeX、GitHub review、Cadence、Spectre。</p>
+    <h2>怎么让 Codex 去社区挖</h2>
+    <p>不要只搜“best skills”。更好的搜索词是“任务 + Codex Skill + SKILL.md”。例如：PPT、Obsidian、Zotero、PDF 处理、browser automation、LaTeX、GitHub review、Cadence、Spectre。</p>
     <p>找到仓库后，让 Codex 帮你看四件事：最近是否维护、有没有 <code>SKILL.md</code>、安装步骤是否支持 Windows、会不会要求危险权限或不明脚本。</p>
+
+    <h2>判断一个 Skill 值不值得装</h2>
+    <ul>
+      <li>目标具体：它解决的是一个清楚任务，不是“什么都能做”。</li>
+      <li>可验证：README 里有示例任务、输入输出或最小测试方法。</li>
+      <li>Windows 可跑：路径、依赖、命令和权限没有明显只面向 Linux/macOS。</li>
+      <li>结构清楚：至少能看到 <code>SKILL.md</code>，最好有 scripts、references 或示例目录。</li>
+      <li>权限透明：会读写哪些目录、会不会联网、会不会保存密钥，都能解释清楚。</li>
+    </ul>
 
     <h2>什么时候不建议装</h2>
     <ul>
